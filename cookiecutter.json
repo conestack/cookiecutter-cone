@@ -1,0 +1,4 @@
+{
+    "project_package": "cone.something",
+    "project_path":"{{cookiecutter.project_package.replace('.','/')}}"
+}
