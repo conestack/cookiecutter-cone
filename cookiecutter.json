@@ -1,4 +1,10 @@
 {
+    "project_title": "Cone Something",
+    "project_slug"
     "project_package": "cone.something",
-    "project_path":"{{cookiecutter.project_package.replace('.','/')}}"
+    "project_path":"{{cookiecutter.project_package.replace('.','/')}}",
+    "vscode_support": "y",
+    "tests": "y",
+    "buildout": "n",
+    "runnable": "n"
 }
