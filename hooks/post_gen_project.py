@@ -3,17 +3,34 @@ import os
 
 options = {{dict(**cookiecutter)}}
 
-optional_files = {
-    "vscode_support": [".vscode"]
-}
+# declaration of files to delete
+# delete files that are bound to an option
+optional_files = [
+    ("vscode_support", [".vscode"]),
+    ("tests", ["src/{{cookiecutter.project_path}}/tests"]),
+    ("buildout", ["buildout.cfg", "dev.cfg"]),
+    (("buildout", "runnable"), ["dev.ini"])
+]
+
 
 def purge_files():
-    for k in optional_files:
-        if options.get(k) in ("n", False, None):
-            files = optional_files[k]
+    """
+    delete files that for which the option is "n" or False
+    """
+    for keys, files in optional_files:
+        if not isinstance(keys, (list, tuple)):
+            keys = (keys,)
+
+        # if none of the keys is positive we delete the file
+        if all([options.get(k) in ("n", False) for k in keys]):
             for fname in files:
-                print(f"removing file {fname}")
-                shutil.rmtree(fname)
+                if os.path.exists(fname):
+                    print(f"removing file {fname}")
+                    if os.path.isdir(fname):
+                        os.rmdir(fname)
+                    else:
+                        os.remove(fname)
+
 
 
 purge_files()
