@@ -1,6 +1,6 @@
 {
     "project_title": "Cone Something",
-    "project_slug"
+    "project_slug": "{{cookiecutter.project_title.lower().replace(' ','-')}}",
     "project_package": "cone.something",
     "project_path":"{{cookiecutter.project_package.replace('.','/')}}",
     "vscode_support": "y",
