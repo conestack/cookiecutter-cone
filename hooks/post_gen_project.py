@@ -5,11 +5,13 @@ options = {{dict(**cookiecutter)}}
 
 # declaration of files to delete
 # delete files that are bound to an option
+# if the option is a list, then one of the options is sufficient for the files to be kept
 optional_files = [
     ("vscode_support", [".vscode"]),
     ("tests", ["src/{{cookiecutter.project_path}}/tests"]),
     ("buildout", ["buildout.cfg", "dev.cfg"]),
-    (("buildout", "runnable"), ["dev.ini"])
+    (("buildout", "runnable"), ["dev.ini"]),
+    ("makefile", ["sources.ini", "Makefile", "requirements_barebone.txt", "constraints.txt"])
 ]
 
 

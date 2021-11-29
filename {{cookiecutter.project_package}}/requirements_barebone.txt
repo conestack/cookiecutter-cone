@@ -1,0 +1,23 @@
+-c constraints.txt
+-e .[test]
+
+# MXDEV
+mxdev
+
+{% if cookiecutter.get("runnable")=="y" %}
+# WSGI
+waitress[wsgi]
+paster
+pyramid_retry
+pyramid_tm
+{% endif %}
+
+# DEV: Style/tests
+zope.testrunner
+black
+isort
+zpretty
+
+# OTHER CONE STUFF
+#cone.sql
+#cone.ugm

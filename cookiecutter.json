@@ -6,5 +6,6 @@
     "vscode_support": "y",
     "tests": "y",
     "buildout": "n",
-    "runnable": "n"
+    "runnable": "n",
+    "makefile": "n"
 }
