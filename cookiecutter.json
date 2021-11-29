@@ -5,6 +5,8 @@
     "project_path":"{{cookiecutter.project_package.replace('.','/')}}",
     "vscode_support": "y",
     "tests": "y",
+    "ugm": "y",
+    "sql": "n",
     "buildout": "n",
     "runnable": "n",
     "makefile": "n"

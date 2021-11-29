@@ -19,5 +19,9 @@ isort
 zpretty
 
 # OTHER CONE STUFF
-#cone.sql
-#cone.ugm
+{%- if cookiecutter.get("ugm")=="y" %}
+cone.sql
+{%- endif %}
+{%- if cookiecutter.get("ugm")=="y" %}
+cone.ugm
+{%- endif %}

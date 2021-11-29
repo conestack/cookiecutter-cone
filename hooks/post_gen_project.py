@@ -11,7 +11,8 @@ optional_files = [
     ("tests", ["src/{{cookiecutter.project_path}}/tests"]),
     ("buildout", ["buildout.cfg", "dev.cfg"]),
     (("buildout", "runnable"), ["dev.ini"]),
-    ("makefile", ["sources.ini", "Makefile", "requirements_barebone.txt", "constraints.txt"])
+    ("makefile", ["sources.ini", "Makefile", "requirements_barebone.txt", "constraints.txt"]),
+    ("ugm", ["ugm.xml"])
 ]
 
 
