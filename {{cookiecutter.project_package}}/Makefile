@@ -22,7 +22,7 @@ PIP_PARAMS=--src devsrc --use-deprecated legacy-resolver
 
 # install and run
 .PHONY: all
-all: install instance run
+all: install run
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
@@ -33,31 +33,21 @@ help: ## This help message
 .PHONY: install
 install: .installed.txt ## pip install all dependencies and scripts
 
-.installed.txt: requirements_barebone.txt constraints.txt sources.ini ## setup.cfg
+.installed.txt: requirements_barebone.txt constraints.txt sources.ini
 	@pip install -U "pip==${PIP_VERSION}" wheel mxdev
 	@mxdev -c sources.ini
 	@pip install -r requirements-dev.txt ${PIP_PARAMS}
 	@pip freeze >.installed.txt
 
 
-.PHONY: instance
-instance: instance/etc/zope.ini  ## create configuration for an zope (plone) instance
-
-instance/etc/zope.ini: install
-	@mkwsgiinstance -d instance -u admin:admin
-	@cp skel/zope.ini instance/etc/
-	@mkdir -p instance/etc/package-includes
-	@cp skel/project-configure.zcml instance/etc/package-includes/{{cookiecutter.project_package}}-configure.zcml
-
 test: install
 	@zope-testrunner --test-path=src
 
-run: instance  ## run Plone
-	@runwsgi -v instance/etc/zope.ini
+run: install  ## run Plone
+	@pserve dev.ini
 
 .PHONY: clean
 clean: install  ## remove instance configuration (keep data)
-	@rm -fr instance/etc instance/inituser
 	@pip uninstall -y -r requirements-dev.txt
 	@rm .installed.txt
 
