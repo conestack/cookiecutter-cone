@@ -12,7 +12,8 @@ optional_files = [
     ("buildout", ["buildout.cfg", "dev.cfg"]),
     (("buildout", "runnable"), ["dev.ini"]),
     ("makefile", ["sources.ini", "Makefile", "requirements_barebone.txt", "constraints.txt"]),
-    ("ugm", ["ugm.xml"])
+    ("ugm", ["ugm.xml"]),
+    ("browser", ["browser"]), 
 ]
 
 

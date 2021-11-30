@@ -14,7 +14,8 @@
                 "${workspaceFolder}/dev.ini"
             ],
             "pyramid": true,
-            "jinja": true
+            "jinja": true,
+            "justMyCode": false
         },
         {% endif %}
         {
@@ -22,7 +23,8 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/src/{{cookiecutter.project_path}}/tests/__init__.py",
-            "console": "integratedTerminal"
+            "console": "integratedTerminal",
+            "justMyCode": false
         }
     ]
 }
